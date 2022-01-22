@@ -492,8 +492,8 @@ Ensure the default browser behavior of the `hidden` attribute.
 .mr-32 {
   margin-right: 8rem;
 }
-.ml-12 {
-  margin-left: 3rem;
+.ml-6 {
+  margin-left: 1.5rem;
 }
 .mt-4 {
   margin-top: 1rem;
@@ -501,11 +501,17 @@ Ensure the default browser behavior of the `hidden` attribute.
 .mt-6 {
   margin-top: 1.5rem;
 }
+.mt-12 {
+  margin-top: 3rem;
+}
 .ml-4 {
   margin-left: 1rem;
 }
 .mt-24 {
   margin-top: 6rem;
+}
+.ml-12 {
+  margin-left: 3rem;
 }
 .ml-1 {
   margin-left: 0.25rem;
@@ -522,17 +528,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .-mt-px {
   margin-top: -1px;
 }
-.ml-16 {
-  margin-left: 4rem;
-}
-.ml-6 {
-  margin-left: 1.5rem;
-}
-.mt-12 {
-  margin-top: 3rem;
-}
 .ml-0 {
   margin-left: 0px;
+}
+.mr-64 {
+  margin-right: 16rem;
 }
 .block {
   display: block;
@@ -573,9 +573,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .w-20 {
   width: 5rem;
 }
-.w-1\/4 {
-  width: 25%;
-}
 .w-5 {
   width: 1.25rem;
 }
@@ -594,6 +591,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .w-4 {
   width: 1rem;
 }
+.w-6 {
+  width: 1.5rem;
+}
 .max-w-6xl {
   max-width: 72rem;
 }
@@ -603,8 +603,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
 .flex-col {
   flex-direction: column;
+}
+.flex-wrap {
+  flex-wrap: wrap;
 }
 .items-center {
   align-items: center;
@@ -617,6 +623,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .gap-4 {
   gap: 1rem;
+}
+.gap-12 {
+  gap: 3rem;
 }
 .space-y-12 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
@@ -633,6 +642,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-right: calc(2rem * var(--tw-space-x-reverse));
   margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)));
 }
+.space-x-12 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(3rem * var(--tw-space-x-reverse));
+  margin-left: calc(3rem * calc(1 - var(--tw-space-x-reverse)));
+}
+.space-x-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1rem * var(--tw-space-x-reverse));
+  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+}
 .overflow-hidden {
   overflow: hidden;
 }
@@ -641,6 +660,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .rounded-lg {
   border-radius: 0.5rem;
+}
+.rounded {
+  border-radius: 0.25rem;
 }
 .border-b {
   border-bottom-width: 1px;
@@ -671,6 +693,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-gray-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+.bg-blue-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 130 246 / var(--tw-bg-opacity));
 }
 .fill-current {
   fill: currentColor;
@@ -709,6 +735,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .pb-16 {
   padding-bottom: 4rem;
 }
+.pb-12 {
+  padding-bottom: 3rem;
+}
 .pt-8 {
   padding-top: 2rem;
 }
@@ -733,6 +762,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;
+}
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
 }
 .font-semibold {
   font-weight: 600;
@@ -818,6 +851,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .ease-in-out {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hover\:bg-blue-600:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(37 99 235 / var(--tw-bg-opacity));
 }
 .hover\:text-gray-400:hover {
   --tw-text-opacity: 1;
@@ -925,16 +962,20 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 @media (min-width: 1024px) {
 
-  .lg\:mt-0 {
-    margin-top: 0px;
-  }
-
   .lg\:ml-12 {
     margin-left: 3rem;
   }
 
+  .lg\:mt-0 {
+    margin-top: 0px;
+  }
+
   .lg\:ml-16 {
     margin-left: 4rem;
+  }
+
+  .lg\:mr-64 {
+    margin-right: 16rem;
   }
 
   .lg\:block {
@@ -947,6 +988,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .lg\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .lg\:grid-cols-5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
   .lg\:flex-row {
