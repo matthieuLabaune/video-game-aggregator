@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 
 class Game extends Model
@@ -16,11 +17,14 @@ class Game extends Model
      */
     public function getAccessToken():string
     {
-        $accessToken = Http::post('https://id.twitch.tv/oauth2/token', [
-            'client_id' => config('services.igdb.client_id'),
-            'client_secret' => config('services.igdb.client_secret'),
-            'grant_type' => config('services.igdb.grant_type'),
-        ])->json('access_token');
-        return $accessToken;
+        $accessToken = Cache::remember('access-token', 3600, function () {
+           return Http::post('https://id.twitch.tv/oauth2/token', [
+                'client_id' => config('services.igdb.client_id'),
+                'client_secret' => config('services.igdb.client_secret'),
+                'grant_type' => config('services.igdb.grant_type'),
+            ])->json('access_token');
+        });
+//         $accessToken = 'd0ru4xu536pi69nq8eze6ue2n25yfi';
+        return $accessToken['access_token'];
     }
 }

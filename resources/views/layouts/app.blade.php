@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Awesome Video Games</title>
     <link rel="stylesheet" href="../../css/app.css">
+    @livewireStyles
 </head>
 <body class="bg-gray-900 text-white">
 <header class="border-b border-gray-800">
@@ -51,5 +52,6 @@
 
 </footer>
 
+@livewireScripts
 </body>
 </html>
