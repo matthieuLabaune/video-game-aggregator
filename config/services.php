@@ -30,4 +30,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'igdb' => [
+        'client_id' => env('IGDB_CLIENT_ID'),
+        'client_secret' => env('IGDB_CLIENT_SECRET'),
+        'grant_type' => env('IGDB_GRANT_TYPE'),
+    ]
 ];
