@@ -25,6 +25,6 @@ class Game extends Model
             ])->json('access_token');
         });
 //         $accessToken = 'd0ru4xu536pi69nq8eze6ue2n25yfi';
-        return $accessToken['access_token'];
+        return $accessToken;
     }
 }

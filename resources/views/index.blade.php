@@ -9,7 +9,6 @@
             <div class="recently-reviewed w-3/4 mr-32">
                 <h2 class="text-blue-500 uppercase tracking-wide font-semibold">Recently reviewed</h2>
                 <livewire:recently-reviewed>
-
             </div>
             <div class="most-anticipated lg:w-1/4 mt-12 lg:mt-0">
                 <h2 class="text-blue-500 uppercase tracking-wide font-semibold">Most Anticipated</h2>

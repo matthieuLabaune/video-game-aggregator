@@ -3,7 +3,7 @@
     @forelse($popularGames as $game)
         <div class="game mt-8">
             <div class="relative inline-block">
-                <a href="#">
+                <a href="{{route('games.show', $game['slug'])}}">
                     <img src="{{ Str::replaceFirst('thumb', 'cover_big', $game['cover']['url']) }}"
                          alt="game cover"
                          class="hover:opacity-75 transition ease-in-out duration-150">
@@ -17,7 +17,7 @@
                     </div>
                 </div>
             </div>
-            <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">
+            <a href="{{route('games.show', $game['slug'])}}" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">
                 {{$game['name']}}
             </a>
             <div class="text-gray-400 mt-1">
@@ -29,6 +29,18 @@
             </div>
         </div>
     @empty
-        Loading...
+        @foreach(range(1, 12) as $game)
+            <div class="game mt-8">
+                <div class="relative inline-block">
+                    <div class="bg-gray-800 w-44 h-56"></div>
+                </div>
+                <div class="block text-transparent text-lg bg-gray-700 rounded leading-tight inline-block mt-4">
+                    Title goes her
+                </div>
+                <div class="text-transparent bg-gray-700 rounded inline-block mt-4">
+                    PS4, PC, Switch
+                </div>
+            </div>
+        @endforeach
     @endforelse
 </div> <!-- end popular-games -->

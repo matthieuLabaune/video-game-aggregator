@@ -5,7 +5,11 @@ module.exports = {
         "./resources/**/*.vue",
     ],
     theme: {
-        extend: {},
+        extend: {
+            spacing: {
+                '44':'11rem'
+            }
+        },
         screens: {
             'sm': '640px',
             // => @media (min-width: 640px) { ... }

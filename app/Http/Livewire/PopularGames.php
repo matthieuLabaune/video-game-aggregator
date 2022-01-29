@@ -26,7 +26,7 @@ class PopularGames extends Component
             'Client-ID' => config('services.igdb.client_id'),
         ])->withToken($accessToken)
             ->withBody("
-            fields name, cover.url, first_release_date, total_rating_count, platforms.abbreviation, rating;
+            fields name, cover.url, first_release_date, total_rating_count, platforms.abbreviation, rating, slug;
                     where total_rating_count > 5
                     & platforms = (48,49,130,6)
                     & (first_release_date >= $before
