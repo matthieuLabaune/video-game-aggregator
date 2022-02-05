@@ -16,89 +16,7 @@ class GamesController extends Controller
      */
     public function index()
     {
-//        $game = new Game();
-//        $accessToken = $game->getAccessToken();
-//
-//        $before = Carbon::now()->subMonths(6)->timestamp;
-////        $after = Carbon::now()->addMonths(6)->timestamp;
-//        $currentDate = Carbon::now()->timestamp;
-//        $afterFourMonths = Carbon::now()->addMonths(4)->timestamp;
-
-//        $popularGames = Http::withHeaders([
-//            'Client-ID' => config('services.igdb.client_id'),
-//        ])->withToken($accessToken)
-//            ->withBody("
-//            fields name, cover.url, first_release_date, total_rating_count, platforms.abbreviation, rating;
-//                    where total_rating_count > 5
-//                    & platforms = (48,49,130,6)
-//                    & (first_release_date >= $before
-//                    & first_release_date < $after);
-//                    sort total_rating_count desc;
-//                    limit 12;", "text/plain"
-//            )
-//            ->post('https://api.igdb.com/v4/games')
-//            ->json();
-
-//        dump($popularGames);
-
-//        $recentlyReviewedGames = Http::withHeaders([
-//            'Client-ID' => config('services.igdb.client_id'),
-//        ])->withToken($accessToken)
-//            ->withBody(
-//                "fields name, cover.url, first_release_date, platforms.abbreviation, rating, rating_count, summary;
-//                        where platforms = (48, 49, 130, 6)
-//                        & (first_release_date >= $before
-//                        & first_release_date < $currentDate
-//                        & rating_count > 5);
-//                        sort rating desc;
-//                        limit 3;",
-//                'text/plain'
-//            )
-//            ->post('https://api.igdb.com/v4/games')
-//            ->json();
-
-//        dump($recentlyReviewedGames);
-
-//        $mostAnticipatedGames = Http::withHeaders([
-//            'Client-ID' => config('services.igdb.client_id'),
-//        ])->withToken($accessToken)
-//            ->withBody("
-//            fields name, cover.url, first_release_date, platforms.abbreviation, rating, rating_count, summary;
-//            where platforms = (48, 49, 130, 6)
-//            & cover != null
-//            & (first_release_date >= $currentDate
-//            & first_release_date < $afterFourMonths);
-//            sort rating desc;
-//            limit 4;",
-//            'text/plain'
-//        )
-//            ->post('https://api.igdb.com/v4/games')->json();
-
-//        dump($mostAnticipatedGames);
-
-//        $comingSoonGames = Http::withHeaders([
-//            'Client-ID' => config('services.igdb.client_id'),
-//        ])->withToken($accessToken)
-//            ->withBody(
-//            "fields name, cover.url, first_release_date, platforms.abbreviation, rating, rating_count, summary;
-//            where platforms = (48,49,130,6)
-//            & cover != null
-//            & first_release_date >= $currentDate;
-//            sort first_release_date asc;
-//            limit 4;",
-//            'text/plain'
-//        )
-//            ->post('https://api.igdb.com/v4/games')->json();
-
-//        dump($comingSoonGames);
-
-        return view('index', [
-//            'popularGames' => $popularGames,
-//            'recentlyReviewedGames' => $recentlyReviewedGames,
-//            'mostAnticipatedGames' => $mostAnticipatedGames,
-//            'comingSoonGames' => $comingSoonGames
-        ]);
-
+        return view('index');
     }
 
     /**
@@ -142,7 +60,6 @@ class GamesController extends Controller
                     websites.*, videos.*, screenshots.*, similar_games.cover.url, similar_games.name, 
                     similar_games.rating,similar_games.platforms.abbreviation, similar_games.slug;
                     where slug=\"{$slug}\";
-                    where slug=\"{$slug}\";
                     ", "text/plain"
             )
             ->post('https://api.igdb.com/v4/games')
@@ -161,8 +78,8 @@ class GamesController extends Controller
             'genres' => collect($game['genres'])->pluck('name')->implode(', '),
             'companies' => $game['involved_companies'][0]['company']['name'],
             'platforms' => collect($game['platforms'])->pluck('abbreviation')->implode(', '),
-            'memberRating' => array_key_exists('rating', $game) ? round($game['rating']) . '%' : '0%',
-            'criticRating' => array_key_exists('aggregated_rating', $game) ? round($game['aggregated_rating']) . '%' : '0%',
+            'memberRating' => array_key_exists('rating', $game) ? round($game['rating']) : '0',
+            'criticRating' => array_key_exists('aggregated_rating', $game) ? round($game['aggregated_rating']) : '0',
             'trailer' => 'https://youtube.com/watch/' . $game['videos'][0]['video_id'],
             'screenshots' => collect($game['screenshots'])->map(function ($screenshot) {
                 return [
@@ -175,7 +92,7 @@ class GamesController extends Controller
                     'coverImageUrl' => array_key_exists('cover', $game)
                         ? Str::replaceFirst('thumb', 'cover_big', $game['cover']['url'])
                         : 'https://via.placeholder.com/264x352',
-                    'rating' => isset($game['rating']) ? round($game['rating']) . '%' : null,
+                    'rating' => isset($game['rating']) ? round($game['rating']) : '0',
                     'platforms' => array_key_exists('platforms', $game)
                         ? collect($game['platforms'])->pluck('abbreviation')->implode(', ')
                         : null,

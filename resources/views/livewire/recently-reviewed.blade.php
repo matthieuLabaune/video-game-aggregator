@@ -6,14 +6,11 @@
                     <img src="{{ $game['coverImageUrl'] }}"
                          class="w-48 hover:opacity-75 transition ease-in-out duration-150">
                 </a>
-                @if($game['rating'])
-                    <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-900 rounded-full"
+{{--                @if($game['rating'])--}}
+                    <div id="{{'reviewed-'.$game['slug']}}" class="absolute bottom-0 right-0 w-16 h-16 bg-gray-900 rounded-full text-xs"
                          style="right:-20px; bottom:-20px">
-                        <div class="font-semibold text-xs flex justify-center items-center h-full">
-                            {{ $game['rating'] }}
-                        </div>
                     </div>
-                @endif
+{{--                @endif--}}
             </div>
             <div class="ml-6 lg:ml-12">
                 <a href="{{route('games.show', $game['slug'])}}" class="block text-lg font-semibold leading-tight hover:text-gray-400 mt-4">
@@ -52,3 +49,9 @@
         @endforeach
     @endforelse
 </div>
+
+@push('scripts')
+    @include('_rating', [
+    'event' => 'reviewGameWithRatingAdded'
+])
+@endpush
